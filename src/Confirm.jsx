@@ -1,15 +1,12 @@
 import { useState } from 'react'
 import App from './App'
 import './App.css'
-import Menu from './Menu';
 
 function Confirm({ user, pass }) {
 
     const [ans, setAnswer] = useState(0);
-    const [suma, setSuma] = useState();
     const [n1, setNume1] = useState(parseInt(pass.slice(7)));
     const [n2, setNume2] = useState(parseInt(user.slice(7)));
-    const [menu, setMenu] = useState(false);
     const suma1 = (eval(n1+n2).toString());
 
 
@@ -17,21 +14,32 @@ function Confirm({ user, pass }) {
     const HandlerClick = (e) => {
         
         e.preventDefault()
-        // setSuma(eval(n1+n2).toString());
         console.log(suma1);
         console.log(ans);
 
         if (Number(ans) == Number(suma1)) {
-            alert("Sesion iniciada")
-            setMenu(true);
-        }
+            swal({
+                icon: "success",
+                text: "¡Sesion Iniciada!"
+              })
+              setTimeout(function() {
+                window.location.href = "/Menu";
+            }, 3000);
+         }
         
         if (ans == "" ) {
-            alert("⚠Error⚠ \n  \n 🔹Debe llenar todos los campos. ")
+            swal({
+                icon: "warning",
+                text: "¡No puedes dejar este campo vacio!"
+              })
             return
         } 
         if (Number(ans) != Number(suma1)){
-            alert("Error❗ \n \n ❌Los datos no coinciden.")
+            swal({
+                title: "¡Incorrecto!",
+                icon: "error",
+                text: " Bro... ¿No sabes sumar? 🤨"
+              })
             return
         }
 
@@ -41,16 +49,12 @@ function Confirm({ user, pass }) {
 
 
     return (
-        <form>
+        <form id="Container">
             <p id="Tconfirm">Confirmación 🔎</p>
             <p id="TextCon">Ingrese la solucion al siguiente problema: </p>
             <p id="Operacion">{`${user.slice(7)}`} + {`${pass.slice(7)}`} = </p> <input id="Respuesta" type="number" placeholder='respuesta...' onChangeCapture={e => setAnswer(e.target.value)} value={ans}></input>
 
-            <button id="Ver" onClick={HandlerClick}>Verificar</button>
-
-            { menu &&
-                <Menu />
-            } 
+            <br></br><button id="Ver"  onClick={HandlerClick}>Verificar</button>
             
         </form>
     )

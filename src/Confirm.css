@@ -1,5 +1,7 @@
-*{
+#Container{
   align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 body{
@@ -8,9 +10,6 @@ body{
 }
 
 #Tconfirm{
-    display: flex;
-    justify-content: center;
-    align-items: center;
     margin-top: 3%;
     font-size: 50px;
     font-family: Georgia;
@@ -18,8 +17,6 @@ body{
   }
   
   #TextCon{
-    display: flex;
-    margin-left: 40%;
     margin-top: 1%;
     font-size: 20px;
     font-family: Georgia;
@@ -27,17 +24,14 @@ body{
   }
   
   #Operacion{
-    display: flex;
-    margin-left: 44%;
     margin-top: 1%;
+    margin-bottom: 1%;
     font-size: 25px;
     font-family: Georgia;
     color: #7cdaf9
   }
   
   #Respuesta{
-    display: flex;
-    margin-left: 48%;
     margin-top: -2.7%;
     height: 30px;
     width: 100px;
@@ -51,10 +45,6 @@ body{
   }
   
   #Ver{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-left: 45%;
     margin-top: 3%;
     height: 40px;
     width: 200px;

@@ -1,15 +1,14 @@
 import React from 'react';
 import { useState } from 'react'
 import './Menu.css'
-import Adivinanza from '../Adivinanza';
-import App from './App';
+import Adivinanza from '../Adivinanza.jsx';
 import swal from 'sweetalert';
+
 
 
 function Menu() {
 
     const [adivi, setAdivi] = useState(false)
-    const [login, setLogin] = useState(false)
     
     const HandlerClick = () => {
         setAdivi(true);
@@ -26,12 +25,13 @@ function Menu() {
             swal({
               title: "¡Listo!",
               text: "Sesión cerrada con exito, ¡Hasta pronto!",
-              timer: "2000"
-            })
-          }
+              timer: "3000"
+            }) 
+            setTimeout(function() {
+              window.location.href = "/";
+          }, 3000);}
         })
 
-        setLogin(true);
       
   }
 
@@ -52,7 +52,7 @@ function Menu() {
       <nav id="Menu" >
         <label id='Logo'>ICR Corp</label>
         <ul id='MenuItems' className='MenuItems'>
-          <li><a id="Activo" onClick={() => window.location.reload()} >Inicio</a></li>
+          <li><a id="Activo" onClick={() => window.location.href="/Menu"} >Inicio</a></li>
           <li><a onClick={HandlerClick}>Adivinanza</a></li>
           <li><a onClick={Cerrar}>Cerrar Sesión</a></li>
         </ul>
@@ -63,10 +63,6 @@ function Menu() {
 
       { adivi &&
         <Adivinanza />
-      }
-
-      { login &&
-        <App />
       }
 
     </div>
